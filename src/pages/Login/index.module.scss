@@ -1,0 +1,22 @@
+.root {
+  height: 100%;
+  width: 100%;
+  background-image: url('~@/assets/img/login-bg.svg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  :global{
+    .login-container {
+      width: 450px;
+      height: 300px;
+      padding: 20px;
+    }
+    .login-logo {
+      width: 40px;
+      height: 40px;
+      display: block;
+      margin:0 auto;
+      margin-bottom: 20px;
+    }
+  }
+}
