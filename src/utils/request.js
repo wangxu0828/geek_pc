@@ -1,3 +1,4 @@
+import { message } from 'antd'
 import axios from 'axios'
 import cache from './storage'
 
@@ -23,6 +24,10 @@ request.interceptors.response.use(
     return res.data
   },
   (err) => {
+    if (err.response.status) {
+      message.error(err.response.data.message)
+      console.log(err.response.data.message)
+    }
     return Promise.reject(err)
   }
 )
