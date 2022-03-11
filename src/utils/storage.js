@@ -6,10 +6,10 @@ class Storage {
    */
   getCache = (key) => {
     const value = window.localStorage.getItem(key)
-    if (value) {
+    if (typeof value === Object) {
       return JSON.parse(value)
     } else {
-      return false
+      return value
     }
   }
 
