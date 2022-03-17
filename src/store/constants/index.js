@@ -1,3 +1,5 @@
 export const LOGIN = 'LOGIN'
 export const GET_USER_INFO = 'GET_USER_INFO'
 export const LOGOUT = 'LOGOUT'
+export const GET_ARTICLE = 'GET_ARTICLE'
+export const GET_CHANNEL = 'GET_CHANNEL'

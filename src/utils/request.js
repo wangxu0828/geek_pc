@@ -2,6 +2,8 @@ import { message } from 'antd'
 import axios from 'axios'
 import cache from './storage'
 
+import history from '@/utils/history'
+
 const request = axios.create({
   baseURL: 'http://geek.itheima.net/v1_0/',
   timeout: 5000
@@ -24,7 +26,8 @@ request.interceptors.response.use(
     return res.data
   },
   (err) => {
-    if (err.response.status) {
+    if (err.response.status === 401) {
+      history.push('/login')
       message.error(err.response.data.message)
       console.log(err.response.data.message)
     }

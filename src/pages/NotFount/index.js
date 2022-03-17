@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function NotFound() {
-  return <div>NotFound页面</div>;
+  return <div>还有counter秒</div>
 }

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import styles from './index.module.scss'
+
 export default function Home() {
-  return <div>Home</div>
+  return <div className={styles.root}></div>
 }

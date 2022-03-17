@@ -89,7 +89,19 @@ export default function MyLayout() {
               <Switch>
                 <Route exact path="/home" component={Home}></Route>
                 <Route path="/home/article" component={Article}></Route>
-                <Route path="/home/publish" component={Publish}></Route>
+                {/* 添加文章 */}
+                <Route
+                  exact
+                  path="/home/publish"
+                  key="add"
+                  component={Publish}
+                ></Route>
+                {/* 修改文章 */}
+                <Route
+                  path="/home/publish/:id"
+                  key="edit"
+                  component={Publish}
+                ></Route>
               </Switch>
             </Content>
           </Layout>
