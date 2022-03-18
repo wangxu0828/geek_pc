@@ -29,11 +29,14 @@ export default function Publish(props) {
 
   const channels = useSelector((state) => state.article.channelList)
 
-  const [fileList, setFileList] = useState([
+  const [fileList] = useState([
     {
       url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
     }
   ])
+  const onFinish = (value) => {
+    console.log(value)
+  }
   return (
     <div>
       <Card
@@ -46,11 +49,18 @@ export default function Publish(props) {
           </Breadcrumb>
         }
       >
-        <Form size="large" labelCol={{ span: 4 }} initialValues={{}}>
-          <Form.Item label="标题" wrapperCol={{ span: 8 }}>
+        <Form
+          size="large"
+          labelCol={{ span: 4 }}
+          initialValues={{
+            content: ''
+          }}
+          onFinish={onFinish}
+        >
+          <Form.Item label="标题" wrapperCol={{ span: 8 }} name="title">
             <Input placeholder="请输入文章的标题"></Input>
           </Form.Item>
-          <Form.Item label="频道" wrapperCol={{ span: 4 }} name="type">
+          <Form.Item label="频道" wrapperCol={{ span: 4 }} name="channel_id">
             <Select placeholder="请选择频道">
               {channels.map((item) => {
                 return (
@@ -61,7 +71,11 @@ export default function Publish(props) {
               })}
             </Select>
           </Form.Item>
-          <Form.Item wrapperCol={{ offset: 4 }} style={{ height: 300 }}>
+          <Form.Item
+            wrapperCol={{ offset: 4 }}
+            style={{ height: 300 }}
+            name="content"
+          >
             <ReactQuill style={{ height: 250 }}></ReactQuill>
           </Form.Item>
           <Form.Item label="封面">
@@ -73,13 +87,19 @@ export default function Publish(props) {
             </Radio.Group>
           </Form.Item>
           <Form.Item wrapperCol={{ offset: 4 }}>
-            <Upload name="cover" listType="picture-card" fileList={fileList}>
+            <Upload
+              listType="picture-card"
+              fileList={fileList}
+              action="http://geek.itheima.net/v1_0/upload"
+            >
               <PlusOutlined></PlusOutlined>
             </Upload>
           </Form.Item>
           <Form.Item wrapperCol={{ offset: 4 }}>
             <Space>
-              <Button type="primary">发布文章</Button>
+              <Button type="primary" htmlType="submit">
+                发布文章
+              </Button>
               <Button>存入草稿</Button>
             </Space>
           </Form.Item>
