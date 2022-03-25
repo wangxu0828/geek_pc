@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { lazy, useEffect } from 'react'
 import { Layout, Menu } from 'antd'
 import {
   PieChartOutlined,
@@ -7,9 +7,7 @@ import {
 } from '@ant-design/icons'
 import styles from './index.module.scss'
 import { Route, Switch, Link } from 'react-router-dom'
-import Home from '../Home'
-import Article from '../Article'
-import Publish from '../Publish'
+
 import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserInfoAction, logout } from '@/store/actions'
@@ -17,6 +15,10 @@ import { CloseOutlined } from '@ant-design/icons'
 import { Popconfirm, message } from 'antd'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 const { Header, Content, Sider } = Layout
+
+const Home = lazy(() => import('../Home'))
+const Article = lazy(() => import('../Article'))
+const Publish = lazy(() => import('../Publish'))
 
 export default function MyLayout() {
   const location = useLocation()

@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
-
-import Layout from './pages/Layout'
-import Login from './pages/Login'
-import NotFount from './pages/NotFount'
-
 import history from '@/utils/history'
+
+const Layout = lazy(() => import('./pages/Layout'))
+const Login = lazy(() => import('./pages/Login'))
+const NotFount = lazy(() => import('./pages/NotFount'))
+
 export default function App() {
   return (
     <Router history={history}>
